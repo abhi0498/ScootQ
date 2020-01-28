@@ -1,4 +1,4 @@
-# mdb
+##JSON Data is loaded using an API and the same data is used to plot the linecharts using Material Bootstrap Library
 
 ## Project setup
 ```
@@ -27,3 +27,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+
