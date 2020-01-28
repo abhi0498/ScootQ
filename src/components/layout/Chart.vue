@@ -1,8 +1,7 @@
 <template>
   <mdb-container>
     <mdb-line-chart :data="lineChartData" :options="lineChartOptions" :width="600" :height="300"></mdb-line-chart>
-    <h1>{{lineChartData}}</h1>
-    <h1>{{err}}</h1>
+
   </mdb-container>
   
 </template>
@@ -25,10 +24,19 @@ import axios from 'axios'
         this.d='hello'
         let labels=[]
         let data=[]
+        let data1=[]
+        
        for (const d of res.data) {
          labels.push(String(d[0]))
          data.push(d[1])
        }
+        axios.get('https://cors-anywhere.herokuapp.com/canvasjs.com/services/data/datapoints.php?xstart=1&ystart=20&length=20&type=json')
+        .then((res)=>{
+      for (const d of res.data) {
+         labels.push(String(d[0]))
+         data1.push(d[1])
+       }
+        })
 
       this.lineChartData=  {          
           labels: labels,
@@ -45,7 +53,7 @@ import axios from 'axios'
               backgroundColor: "rgba(151,187,205,0.2)",
               borderColor: "rgba(151,187,205,1)",
               borderWidth: 0.8,
-              data: [28, 48, 40, 19, 86, 27, 90]
+              data: data1
             }
           ]
       }
