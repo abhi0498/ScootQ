@@ -19,27 +19,26 @@ import axios from 'axios'
       mdbContainer
     },
     created(){
-      axios.get('https://cors-anywhere.herokuapp.com/canvasjs.com/services/data/datapoints.php?xstart=1&ystart=20&length=20&type=json')
+      axios.get('https://cors-anywhere.herokuapp.com/canvasjs.com/services/data/datapoints.php?xstart=1&ystart=20&length=40&type=json')
     .then((res)=>{
         this.d='hello'
         let labels=[]
         let data=[]
         let data1=[]
-        
+        let i=0;
        for (const d of res.data) {
          labels.push(String(d[0]))
+
+         if(i<=20)
          data.push(d[1])
-       }
-        axios.get('https://cors-anywhere.herokuapp.com/canvasjs.com/services/data/datapoints.php?xstart=1&ystart=20&length=20&type=json')
-        .then((res)=>{
-      for (const d of res.data) {
-         labels.push(String(d[0]))
+         else
          data1.push(d[1])
+         i+=1
        }
-        })
+
 
       this.lineChartData=  {          
-          labels: labels,
+          labels: labels.slice(0,20),
           datasets: [
             {
               label: "My First dataset",
