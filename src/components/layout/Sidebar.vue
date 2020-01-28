@@ -1,6 +1,7 @@
 <template>
   <div class='sidebar'>
-      DAshboard
+    <h1>ScootQ</h1>
+      <h2>Dashboard</h2>
   </div>
 </template>
 
